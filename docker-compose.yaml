@@ -1,0 +1,13 @@
+version: "3.9"
+services:
+  web:
+    volumes:
+        - ./app:/app
+    image: "${DOCKER_IMAGE_BACKEND?Variable not set}:${TAG-latest}"
+    build: 
+      context: ./app
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+  redis:
+    image: "redis:alpine"
